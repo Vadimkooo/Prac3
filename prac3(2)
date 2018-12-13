@@ -1,0 +1,84 @@
+//Main.java
+package com.company;
+public class Main { //saved as Main.java
+    public static void main(String[] args) {
+        MovableCircle circle = new MovableCircle(0, 0, 10, 10, 15);
+        System.out.println(circle.toString());
+    }
+}
+
+//Movable.java
+package com.company;
+public interface Movable { //saved as Movable.java
+    void moveUp();
+    void moveDown();
+    void moveLeft();
+    void moveRight();
+}
+
+//MovablePoint.java
+package com.company;
+public class MovablePoint implements Movable { // saved as MovablePoint.java
+    int x;
+    int y;
+    int xSpeed;
+    int ySpeed;
+    public MovablePoint(int x, int y, int xSpeed, int ySpeed) {
+        this.x = x;
+        this.y = y;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+    }
+    public String toString() {
+        return "Movable point{x = " + this.x + ",y = " + this.y +
+                ", xSpeed = " + this.xSpeed + ", ySpeed = " + this.ySpeed + "}";
+    }
+    @Override
+    public void moveUp() {
+        this.y += this.ySpeed;
+    }
+    @Override
+    public void moveDown() {
+        this.y -= this.ySpeed;
+    }
+    @Override
+    public void moveRight() {
+        this.x += this.xSpeed;
+    }
+    @Override
+    public void moveLeft() {
+        this.x -= this.xSpeed;
+    }
+}
+
+//MovableCircle.java
+package com.company;
+public class MovableCircle implements Movable { //saved as MovableCircle.java
+    private int radius;
+    private MovablePoint center;
+    public MovableCircle(int x, int y, int xSpeed, int ySpeed, int radius) {
+        this.center = new MovablePoint(x, y, xSpeed, ySpeed);
+        this.radius = radius;
+    }
+    @Override
+    public String toString() {
+        return "MovableCircle(radius = " + this.radius
+                + ", center = " + this.center + ")";
+    }
+    @Override
+    public void moveUp() {
+        this.center.y += this.center.ySpeed;
+    }
+    @Override
+    public void moveDown() {
+        this.center.y -= this.center.ySpeed;
+    }
+    @Override
+    public void moveRight() {
+        this.center.x += this.center.xSpeed;
+    }
+    @Override
+    public void moveLeft() {
+        this.center.x -= this.center.xSpeed;
+    }
+}
