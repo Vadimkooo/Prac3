@@ -1,5 +1,3 @@
-// Shape.java <<abstract>>
-
 package com.company;
 public abstract class Shape {
     protected String color;
